@@ -1,0 +1,47 @@
+<p style="color: green"><%= notice %></p>
+
+!DOCTYPE html>   
+<html>   
+<body>   
+ <div class="container">   
+    <h3>Train List</h3>   
+        
+      <br>   
+    <table border="2">   
+      <thead>   
+      <tr>   
+        <th>Name</th>   
+        <th>Train No.</th>   
+        <th>Source</th>  
+        <th>Destination</th> 
+        <th>Frequency</th>
+        <th>Distance</th>
+        <th>Arrival time</th>
+        <th>Departure time</th>
+      </tr>   
+      </thead>   
+      <tbody>   
+      <% @train_detail %>   
+          <tr>   
+            <td><%=  @train_detail.name %></td>   
+            <td><%=  @train_detail.train_no %></td> 
+            <td><%=  @train_detail.source%></td>   
+            <td><%=  @train_detail.destination %></td> 
+            <td><%=  @train_detail.frequency %></td> 
+            <td><%=  @train_detail.distance %></td> 
+            <td><%=  @train_detail.arrival_time %></td> 
+            <td><%=  @train_detail.departure_time %></td> 
+            <td><%= link_to "Destroy", train_detail_path, data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"}%> </td> 
+               <div>   
+                
+              </div>   
+             
+          </tr>   
+       
+      </tbody>   
+    </table>   
+    </div>   
+  </body>   
+</html>  

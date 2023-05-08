@@ -1,0 +1,49 @@
+<h1>New train detail</h1>
+
+<h2>Sign up</h2>
+<%= form_with model: @train_detail do |f| %>
+
+
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :train_no %><br />
+    <%= f.text_field :train_no %>
+  </div>
+
+  <div class="field">
+  <%= f.label :departure_time %><br />
+  <%= f.time_field :departure_time %>
+  </div>
+
+
+  <div class="field">
+  <%= f.label :arrival_time %><br />
+  <%= f.time_field :arrival_time %>
+  </div>
+
+  <div class="field">
+  <%= f.label :source %><br />
+  <%= f.text_field :source %>
+  </div>
+
+  <div class="field">
+  <%= f.label :destination %><br />
+  <%= f.text_field :destination %>
+  </div>
+
+<%= f.select :frequency, options_for_select(TrainDetail.frequencies.map{|k,v| [k.humanize.capitalize,k]}) %>
+  <div class="field">
+  <%= f.label :distance %><br />
+  <%= f.text_field :distance %>
+  </div>
+
+<div class="actions">
+<%= f.submit "Submit" %>
+</div>
+<%end%>
+
