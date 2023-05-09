@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :train_details
   devise_for :users
+  resources :train_details do
+    resources :reservations, only: [:new,:create]
+  end
 
-  root 'home#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'search', to: 'train_details#search'
+  root 'reservations#index'
 end
