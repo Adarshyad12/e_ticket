@@ -1,0 +1,18 @@
+<h1>New reservation</h1>
+
+<%= form_for @reservation, url: train_detail_reservations_path(@train_detail) do |f| %>
+  
+  <%= f.date_field :journey_date,value: @train_detail.departure_time, type: "hidden" %>
+  
+  <%= f.label :traveller %>
+  <%= f.text_field :traveller, class: "form-control" %>
+
+  
+  <%= f.text_field :amount,value: 0, type: "hidden" %>
+  
+  <%= f.submit "Book Ticket", class: "btn btn-primary" %>
+  <% end %>
+
+<div>
+
+</div>

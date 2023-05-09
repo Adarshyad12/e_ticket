@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Train details</h1>
+<table border="2"> 
+  <thead>
+    <tr>
+      <th>Train Name</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Departure Time</th>
+      <th>Arrival Time</th>
+      <th>actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.name %></td>
+        <td><%= result.source %></td>
+        <td><%= result.destination %></td>
+        <td><%= result.departure_time %></td>
+        <td><%= result.arrival_time %></td>
+        <td><%=link_to "Booking" ,new_train_detail_reservation_path(result) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
