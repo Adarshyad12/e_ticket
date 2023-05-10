@@ -1,7 +1,20 @@
+
 <p style="color: green"><%= notice %></p>
 
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  opacity:10;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+
 <h1>Train details</h1>
-<table border="2">   
+<table style="width:100%; background-color:white">   
 <thead>   
 <tr>  
   <th>Train No</th> 
@@ -29,10 +42,9 @@
     <td><%= train_detail.distance %></td> 
     <td><%= train_detail.fare %></td> 
     <td><%= link_to "Edit", edit_train_detail_path(train_detail) %></td>
-
-
-</div>
+</tr>
 <%end%>
+</table>
 <%= link_to "New train detail", new_train_detail_path %>
 <br>
 

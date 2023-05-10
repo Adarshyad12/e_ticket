@@ -1,0 +1,59 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  opacity:10;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+
+<h1>Reservation Details</h1>
+<table style="width:100%; background-color:white">
+<table>
+  <thead>
+    <tr>
+    <th>Source</th>
+      <th>Destination</th>
+      <th>Train Name</th>
+
+      <th>Train No.</th>
+      <th>Booking Date</th>
+      <th>PNR</th>
+      <th>Journey Date</th>
+      <th>Travellers</th>
+      <th> Fare (INR) </th>
+      <th> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+
+      <tr>
+      <td><%= reservation.train_detail.source %></td>
+      <td><%= reservation.train_detail.destination %></td>
+      <td><%= reservation.train_detail.name %></td>
+      <td><%= reservation.train_detail.train_no %></td>
+        <td><%= reservation.booking_date %></td>
+        <td><%= reservation.pnr %></td>
+        <td><%= reservation.journey_date %></td>
+        <td><%= reservation.traveller %></td>
+        <td><%= reservation.amount %></td>
+
+        <td><li><%= link_to "Cancel Booking", train_detail_reservation_path(reservation.train_detail,reservation), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %></li></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+</div>
+<center><b style="background-color:white"> आपकी यात्रा मंगलमय हो! </b></center>
+<div style="padding:2px;background-color:white">
+
+</div>

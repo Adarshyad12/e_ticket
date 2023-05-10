@@ -25,7 +25,7 @@ class TrainDetailsController < ApplicationController
       
     if @train_detail.save 
         
-        redirect_to @train_detail
+        redirect_to train_details_path
       
       else 
         render :new, status: :unprocessable_entity 
