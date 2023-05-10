@@ -5,18 +5,20 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.all
   end
 
-  # GET /reservations/1 or /reservations/1.json
   def show
   end
 
-  # GET /reservations/new
+  
   def new
     @reservation = Reservation.new
     @train_detail = TrainDetail.all
     @train_detail = TrainDetail.find(params[:train_detail_id])
   end
-
-  # GET /reservations/1/edit
+  
+  def reservation_details
+    @reservations = current_user.reservations
+  end
+  
   def edit
     @reservation = Reservation.find(params[:id])
   end
@@ -25,10 +27,14 @@ class ReservationsController < ApplicationController
     @train_detail = TrainDetail.find(params[:train_detail_id])
     @reservation = @train_detail.reservations.new(reservation_params)
     @reservation.user = current_user
+
     @reservation.amount = @reservation.traveller * @train_detail.fare  
 
     if @reservation.save
-      redirect_to root_path	, notice: "Your reservation has been created successfully."
+
+
+      EticketMailer.with(user:current_user,reservation:@reservation).shipping_confirmation_email.deliver_now
+      redirect_to @train_detail	, notice: "Your reservation has been created successfully."
     else
       render :new
     end
@@ -43,21 +49,17 @@ class ReservationsController < ApplicationController
 
   # DELETE /reservations/1 or /reservations/1.json
   def destroy
+    @reservation = Reservation.find(params[:id])
+   
     @reservation.destroy
-
-    respond_to do |format|
-      format.html { redirect_to reservations_url, notice: "Reservation was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to train_detail_reservations_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_reservation
       @reservation = Reservation.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def reservation_params
       params.require(:reservation).permit!   
     end
