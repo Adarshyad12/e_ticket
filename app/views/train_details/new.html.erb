@@ -8,44 +8,69 @@
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+    <% @train_detail.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div class="field">
     <%= f.label :train_no %><br />
     <%= f.text_field :train_no %>
+    <% @train_detail.errors.full_messages_for(:train_no).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div class="field">
   <%= f.label :departure_time %><br />
   <%= f.datetime_field :departure_time %>
+  <% @train_detail.errors.full_messages_for(:departure_time).each do |message| %>
+    <div><%= message %></div>
+    <% end %>
   </div>
 
 
   <div class="field">
   <%= f.label :arrival_time %><br />
   <%= f.datetime_field :arrival_time %>
+  <% @train_detail.errors.full_messages_for(:arrival_time).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </div>
 
   <div class="field">
   <%= f.label :source %><br />
   <%= f.text_field :source %>
+  <% @train_detail.errors.full_messages_for(:source).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </div>
 
   <div class="field">
   <%= f.label :destination %><br />
   <%= f.text_field :destination %>
+  <% @train_detail.errors.full_messages_for(:destination).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </div>
 
 <%= f.select :frequency, options_for_select(TrainDetail.frequencies.map{|k,v| [k.humanize.capitalize,k]}) %>
-  <div class="field">
+  
+<div class="field">
   <%= f.label :distance %><br />
   <%= f.text_field :distance %>
+  <% @train_detail.errors.full_messages_for(:distance).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </div>
 
 
   <div class="field">
   <%= f.label :fare %><br />
   <%= f.text_field :fare %>
+  <% @train_detail.errors.full_messages_for(:fare).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </div>
 
 <div class="actions">

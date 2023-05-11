@@ -34,7 +34,7 @@ class ReservationsController < ApplicationController
 
 
       EticketMailer.with(user:current_user,reservation:@reservation).shipping_confirmation_email.deliver_now
-      redirect_to @train_detail	, notice: "Your reservation has been created successfully."
+      redirect_to reservations_reservation_details_path	, notice: "Your reservation has been created successfully."
     else
       render :new
     end
